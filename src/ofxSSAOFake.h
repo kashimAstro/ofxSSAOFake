@@ -60,7 +60,7 @@ public:
 
         }
 
-        void prepareNoiseMap(int wn=50,int hn=50,int d=30, float s=50.0) {
+        void prepareNoiseMap(int wn=150,int hn=150,int d=30, float s=50.0) {
             noiseMap.allocate(wn,hn,OF_IMAGE_GRAYSCALE);
             for (int y=0; y<hn; y++) {
                 for (int x=0; x<wn; x++) {
@@ -98,6 +98,10 @@ public:
             noiseMap.reloadTexture();
         }
 
+	ofImage getNoiseMap(){
+		return noiseMap;
+	}
+
         void setResolution(ofPoint _resolution){
             resolution=_resolution;
         }
@@ -115,7 +119,6 @@ public:
             ioutScene=img;
 	    imgActive=true;
         }
-
 
         void draw(){
             ssaoShader.begin();

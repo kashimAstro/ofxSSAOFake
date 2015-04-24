@@ -12,9 +12,9 @@ void ofApp::setup(){
 
     gui.setup();
     gui.add(dark.set("dark ssao",0.16f,0.f,1.f));
-    gui.add(disorder.set("disorder ssao",0.f,0.f,255.f));
+    gui.add(dis.set("disorder ssao",ofVec2f(0.f),ofVec2f(0.f),ofVec2f(255.f)));
     dark.addListener(this,&ofApp::darkChange);
-    disorder.addListener(this,&ofApp::noiseChange);
+    dis.addListener(this,&ofApp::noiseChange);
 
     ssao.setDark(dark.get());
 }
@@ -23,8 +23,8 @@ void ofApp::darkChange(float & value){
     ssao.setDark(value);
 }
 
-void ofApp::noiseChange(float & value){
-    ssao.prepareNoiseMap(250,250,value);
+void ofApp::noiseChange(ofVec2f & value){
+    ssao.setNoiseMap(value.x,value.y);
 }
 
 void ofApp::update(){

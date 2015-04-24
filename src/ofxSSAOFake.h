@@ -60,7 +60,7 @@ public:
 
         }
 
-        void prepareNoiseMap(int wn=50,int hn=50,int d=30, float s=(ofGetFrameNum()/50.0)) {
+        void prepareNoiseMap(int wn=50,int hn=50,int d=30, float s=50.0) {
             noiseMap.allocate(wn,hn,OF_IMAGE_GRAYSCALE);
             for (int y=0; y<hn; y++) {
                 for (int x=0; x<wn; x++) {
@@ -82,7 +82,7 @@ public:
             prepareNoiseMap();
         }
 
-        void setNoiseMap(int d=30, float s=(ofGetFrameNum()/50.0)) {
+        void setNoiseMap(int d=30, float s=50.0) {
             int wn=wNoise;
             int hn=hNoise;
             for (int y=0; y<hn; y++) {

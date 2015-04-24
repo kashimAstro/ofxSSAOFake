@@ -6,7 +6,8 @@ class ofApp : public ofBaseApp {
 	public:
 		ofxPanel gui;
 		ofParameter<float> dark;
-		ofParameter<float> disorder;
+		ofParameter<ofVec2f> dis;
+
 
 		int w,h;
 		ofxSSAOFake ssao;
@@ -14,7 +15,7 @@ class ofApp : public ofBaseApp {
 
 		void setup();
 	        void darkChange(float & value);
-		void noiseChange(float & value);
+		void noiseChange(ofVec2f & value);
 		void update();
 		void draw();
 		void keyPressed(int key);

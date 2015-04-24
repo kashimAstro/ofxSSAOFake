@@ -28,13 +28,13 @@ public:
                     uniform vec2 resolution;
                     uniform vec2 tRes1;
                     void main (void){
-                        vec2 uv = gl_TexCoord[0].st/resolution.xy;
+                        vec2 uv = gl_TexCoord[0].st/resolution.xy*0.9;
                         float zr = 1.0-texture2D( tex0, uv ).x;
                         float ao = 0.0;
                         //
                         for( int i=0; i<8; i++ ){
-                                vec2 off = -1.0 + 2.0*texture2D( tex1, (gl_TexCoord[0].xy + 23.71*float(i))/tRes1.xy ).xz;
-                                float z = 1.0-texture2D( tex0, (gl_TexCoord[0].xy + floor(off*16.0))/resolution.xy ).x;
+                                vec2 off = -1.0 + 2.0*texture2D( tex1, (gl_TexCoord[0].xy + 23.71*float(i))/tRes1.xy*0.9 ).xz;
+                                float z = 1.0-texture2D( tex0, (gl_TexCoord[0].xy + floor(off*16.0))/resolution.xy*0.9 ).x;
                                 ao += clamp( (zr-z)/0.1, 0.0, dark);
                         }
                         //
@@ -60,7 +60,7 @@ public:
 
         }
 
-        void prepareNoiseMap(int wn=150,int hn=150,int d=30, float s=50.0) {
+        void prepareNoiseMap(int wn=150,int hn=150,int d=0, float s=0.13) {
             noiseMap.allocate(wn,hn,OF_IMAGE_GRAYSCALE);
             for (int y=0; y<hn; y++) {
                 for (int x=0; x<wn; x++) {
